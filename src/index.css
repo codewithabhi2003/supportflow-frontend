@@ -2,8 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Light Mode (default) */
-:root {
+/* Default = Dark mode, true neutral black (no blue/purple tint anywhere).
+   Also matches [data-theme="dark"] exactly, so if JS hasn't run yet (or
+   fails), the page still renders black instead of flashing light mode. */
+:root,
+[data-theme="dark"] {
+  --bg-base:      #000000;
+  --bg-surface:   #0A0A0A;
+  --bg-card:      #121212;
+  --bg-sidebar:   #000000;
+  --bg-input:     #1A1A1A;
+  --bg-hover:     #242424;
+
+  --primary:      #818CF8;
+  --primary-dark: #6366F1;
+  --primary-soft: rgba(129,140,248,0.12);
+  --primary-ring: rgba(129,140,248,0.24);
+
+  --text-primary:  #FAFAFA;
+  --text-secondary:#A1A1AA;
+  --text-muted:    #6B6B70;
+
+  --border:        rgba(255,255,255,0.08);
+  --border-strong: rgba(255,255,255,0.14);
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.5);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.6);
+
+  /* Status */
+  --status-open:         #3B82F6;
+  --status-open-bg:      rgba(59,130,246,0.12);
+  --status-progress:     #F59E0B;
+  --status-progress-bg:  rgba(245,158,11,0.12);
+  --status-closed:       #10B981;
+  --status-closed-bg:    rgba(16,185,129,0.12);
+
+  /* Priority */
+  --priority-high:    #EF4444;
+  --priority-high-bg: rgba(239,68,68,0.12);
+  --priority-med:     #F59E0B;
+  --priority-med-bg:  rgba(245,158,11,0.12);
+  --priority-low:     #9CA3AF;
+  --priority-low-bg:  rgba(156,163,175,0.12);
+}
+
+/* Light mode — explicit opt-in override */
+[data-theme="light"] {
   --bg-base:      #FAFAFA;
   --bg-surface:   #FFFFFF;
   --bg-card:      #FFFFFF;
@@ -41,31 +85,6 @@
   --priority-med-bg:  #FFFBEB;
   --priority-low:     #6B7280;
   --priority-low-bg:  #F9FAFB;
-}
-
-/* Dark Mode — toggle via data-theme="dark" on <html> */
-[data-theme="dark"] {
-  --bg-base:      #0F0F13;
-  --bg-surface:   #141418;
-  --bg-card:      #1A1A20;
-  --bg-sidebar:   #111116;
-  --bg-input:     #1E1E26;
-  --bg-hover:     #22222C;
-
-  --primary:      #818CF8;
-  --primary-dark: #6366F1;
-  --primary-soft: rgba(129,140,248,0.10);
-  --primary-ring: rgba(129,140,248,0.20);
-
-  --text-primary:  #F1F5F9;
-  --text-secondary:#94A3B8;
-  --text-muted:    #475569;
-
-  --border:        rgba(255,255,255,0.06);
-  --border-strong: rgba(255,255,255,0.10);
-
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
-  --shadow-md: 0 4px 16px rgba(0,0,0,0.4);
 }
 
 * {
