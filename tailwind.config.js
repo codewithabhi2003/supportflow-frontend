@@ -1,0 +1,46 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  darkMode: 'class',
+  content: ['./index.html', './src/**/*.{js,jsx}'],
+  theme: {
+    extend: {
+      colors: {
+        base:      'var(--bg-base)',
+        surface:   'var(--bg-surface)',
+        card:      'var(--bg-card)',
+        sidebar:   'var(--bg-sidebar)',
+        input:     'var(--bg-input)',
+        hover:     'var(--bg-hover)',
+        primary:      'var(--primary)',
+        'primary-dark': 'var(--primary-dark)',
+        'primary-soft': 'var(--primary-soft)',
+        'primary-ring': 'var(--primary-ring)',
+        'text-primary':   'var(--text-primary)',
+        'text-secondary': 'var(--text-secondary)',
+        'text-muted':     'var(--text-muted)',
+        border:        'var(--border)',
+        'border-strong': 'var(--border-strong)',
+        'status-open':        'var(--status-open)',
+        'status-open-bg':     'var(--status-open-bg)',
+        'status-progress':    'var(--status-progress)',
+        'status-progress-bg': 'var(--status-progress-bg)',
+        'status-closed':      'var(--status-closed)',
+        'status-closed-bg':   'var(--status-closed-bg)',
+        'priority-high':    'var(--priority-high)',
+        'priority-high-bg': 'var(--priority-high-bg)',
+        'priority-med':     'var(--priority-med)',
+        'priority-med-bg':  'var(--priority-med-bg)',
+        'priority-low':     'var(--priority-low)',
+        'priority-low-bg':  'var(--priority-low-bg)',
+      },
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+      },
+      boxShadow: {
+        sm: 'var(--shadow-sm)',
+        md: 'var(--shadow-md)',
+      },
+    },
+  },
+  plugins: [],
+};
