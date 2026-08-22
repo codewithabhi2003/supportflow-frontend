@@ -10,6 +10,7 @@ import {
   CheckCircle2,
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
+import DashboardPreview from '../components/home/DashboardPreview';
 
 const features = [
   {
@@ -84,110 +85,87 @@ export default function Home() {
       <section className="relative overflow-hidden">
         <div className="pointer-events-none absolute -top-32 left-1/2 h-96 w-[48rem] -translate-x-1/2 rounded-full bg-primary-soft blur-3xl" />
 
-        <div className="relative mx-auto flex max-w-4xl flex-col items-center px-6 pb-20 pt-16 text-center sm:pt-24">
-          <motion.div
-            initial="hidden"
-            animate="show"
-            variants={fadeUp}
-            className="mb-5 inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-3 py-1.5 text-xs font-medium text-text-secondary shadow-sm"
-          >
-            <Sparkles size={13} className="text-primary" />
-            Powered by Groq AI &amp; n8n automation
-          </motion.div>
+        <div className="relative mx-auto max-w-6xl px-6 pb-20 pt-16 sm:pt-24">
+          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-10">
+            {/* Text content — first in the DOM (reads naturally on mobile,
+                good for accessibility), visually moved to the right on
+                desktop via lg:order-2. */}
+            <div className="flex flex-col items-center text-center lg:order-2 lg:items-start lg:text-left">
+              <motion.div
+                initial="hidden"
+                animate="show"
+                variants={fadeUp}
+                className="mb-5 inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-3 py-1.5 text-xs font-medium text-text-secondary shadow-sm"
+              >
+                <Sparkles size={13} className="text-primary" />
+                Powered by Groq AI &amp; n8n automation
+              </motion.div>
 
-          <motion.h1
-            initial="hidden"
-            animate="show"
-            custom={1}
-            variants={fadeUp}
-            className="text-4xl font-bold leading-tight tracking-tight text-text-primary sm:text-5xl lg:text-6xl"
-          >
-            Customer support,
-            <br />
-            <span className="text-primary">supercharged by AI.</span>
-          </motion.h1>
+              <motion.h1
+                initial="hidden"
+                animate="show"
+                custom={1}
+                variants={fadeUp}
+                className="text-4xl font-bold leading-tight tracking-tight text-text-primary sm:text-5xl"
+              >
+                Customer support,
+                <br />
+                <span className="text-primary">supercharged by AI.</span>
+              </motion.h1>
 
-          <motion.p
-            initial="hidden"
-            animate="show"
-            custom={2}
-            variants={fadeUp}
-            className="mt-6 max-w-xl text-base text-text-secondary sm:text-lg"
-          >
-            SupportFlow triages every ticket the moment it arrives — summarizing,
-            categorizing, and drafting a reply automatically, so your team spends
-            time solving problems instead of reading through them.
-          </motion.p>
+              <motion.p
+                initial="hidden"
+                animate="show"
+                custom={2}
+                variants={fadeUp}
+                className="mt-6 max-w-xl text-base text-text-secondary sm:text-lg"
+              >
+                SupportFlow triages every ticket the moment it arrives — summarizing,
+                categorizing, and drafting a reply automatically, so your team spends
+                time solving problems instead of reading through them.
+              </motion.p>
 
-          <motion.div
-            initial="hidden"
-            animate="show"
-            custom={3}
-            variants={fadeUp}
-            className="mt-9 flex flex-col items-center gap-3 sm:flex-row"
-          >
-            <Link to={isAuthenticated ? '/dashboard' : '/register'}>
-              <button className="flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-white shadow-md transition-colors hover:bg-primary-dark">
-                {isAuthenticated ? `Continue as ${user?.name?.split(' ')[0] || 'you'}` : 'Get Started Free'}
-                <ArrowRight size={16} />
-              </button>
-            </Link>
-            {!isAuthenticated && (
-              <Link to="/login">
-                <button className="rounded-lg border border-border bg-card px-6 py-3 text-sm font-semibold text-text-secondary transition-colors hover:bg-hover">
-                  Sign in
-                </button>
-              </Link>
-            )}
-          </motion.div>
+              <motion.div
+                initial="hidden"
+                animate="show"
+                custom={3}
+                variants={fadeUp}
+                className="mt-9 flex flex-col items-center gap-3 sm:flex-row"
+              >
+                <Link to={isAuthenticated ? '/dashboard' : '/register'}>
+                  <button className="flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-white shadow-md transition-colors hover:bg-primary-dark">
+                    {isAuthenticated ? `Continue as ${user?.name?.split(' ')[0] || 'you'}` : 'Get Started Free'}
+                    <ArrowRight size={16} />
+                  </button>
+                </Link>
+                {!isAuthenticated && (
+                  <Link to="/login">
+                    <button className="rounded-lg border border-border bg-card px-6 py-3 text-sm font-semibold text-text-secondary transition-colors hover:bg-hover">
+                      Sign in
+                    </button>
+                  </Link>
+                )}
+              </motion.div>
 
-          <motion.p
-            initial="hidden"
-            animate="show"
-            custom={4}
-            variants={fadeUp}
-            className="mt-4 text-xs text-text-muted"
-          >
-            No credit card required · Set up in minutes
-          </motion.p>
-
-          {/* Decorative dashboard preview card */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.35, ease: 'easeOut' }}
-            className="mt-16 w-full max-w-3xl rounded-2xl border border-border bg-card p-4 shadow-md sm:p-6"
-          >
-            <div className="flex items-center gap-1.5 pb-4">
-              <span className="h-2.5 w-2.5 rounded-full bg-priority-high" />
-              <span className="h-2.5 w-2.5 rounded-full bg-priority-med" />
-              <span className="h-2.5 w-2.5 rounded-full bg-status-closed" />
+              <motion.p
+                initial="hidden"
+                animate="show"
+                custom={4}
+                variants={fadeUp}
+                className="mt-4 text-xs text-text-muted"
+              >
+                No credit card required · Set up in minutes
+              </motion.p>
             </div>
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-              {[
-                { label: 'Total Tickets', value: '128' },
-                { label: 'Open', value: '34' },
-                { label: 'AI Analyzed', value: '112' },
-                { label: 'Avg. Response', value: '2m' },
-              ].map((stat) => (
-                <div key={stat.label} className="rounded-xl border border-border bg-input p-3 text-left">
-                  <p className="text-[11px] font-medium uppercase tracking-wide text-text-muted">{stat.label}</p>
-                  <p className="mt-1 text-xl font-semibold text-text-primary">{stat.value}</p>
-                </div>
-              ))}
+
+            {/* Real mini-dashboard preview — order-1 on desktop (left side).
+                Uses actual Recharts components wired to the same CSS
+                variables as the real dashboard, so it follows light/dark
+                mode automatically instead of being a static mockup. */}
+            <div className="flex justify-center lg:order-1 lg:justify-start">
+              <DashboardPreview />
             </div>
-            <div className="mt-3 flex h-24 items-end gap-1.5 rounded-xl border border-border bg-input p-3">
-              {[40, 65, 50, 80, 60, 95, 70, 88, 55, 100, 75, 90].map((h, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ height: 0 }}
-                  animate={{ height: `${h}%` }}
-                  transition={{ duration: 0.5, delay: 0.5 + i * 0.03, ease: 'easeOut' }}
-                  className="flex-1 rounded-sm bg-primary/70"
-                />
-              ))}
-            </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
