@@ -39,7 +39,7 @@ export default function TicketDetail() {
 
   if (notFound) {
     return (
-      <div className="p-8">
+      <div className="p-4 sm:p-6 lg:p-8">
         <EmptyState
           icon={SearchX}
           title="Ticket not found"
@@ -56,7 +56,7 @@ export default function TicketDetail() {
 
   if (unreachable || !ticket) {
     return (
-      <div className="p-8">
+      <div className="p-4 sm:p-6 lg:p-8">
         <EmptyState
           icon={WifiOff}
           title="This ticket isn't available right now"
@@ -79,7 +79,7 @@ export default function TicketDetail() {
         }
       />
 
-      <div className="grid grid-cols-1 gap-6 p-8 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 p-4 sm:p-6 lg:p-8 lg:grid-cols-3">
         <div className="flex flex-col gap-6 lg:col-span-2">
           <TicketHeader ticket={ticket} />
           <CustomerInfo ticket={ticket} />
