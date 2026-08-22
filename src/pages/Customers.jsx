@@ -29,7 +29,7 @@ export default function Customers() {
   return (
     <>
       <TopBar title="Customers" subtitle="Unique customers derived from tickets" />
-      <div className="p-8">
+      <div className="p-4 sm:p-6 lg:p-8">
         {loading ? (
           <div className="flex justify-center py-20"><Spinner size={28} /></div>
         ) : customers.length === 0 ? (
