@@ -1,0 +1,43 @@
+name: Frontend CI
+
+# Runs on every push/PR to main — installs dependencies and runs a real
+# production build. A failed build here means something would break for
+# real users, not just a style nitpick, so this is the one check that
+# actually matters for a frontend: does `vite build` succeed at all.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        # VITE_API_URL isn't needed to build — Vite only substitutes it at
+        # build time if referenced, and the code already falls back to
+        # localhost:5000/api when it's unset. Real deployments (Vercel,
+        # Render) set it themselves via their own environment variable UI.
+        run: npm run build
+
+      - name: Confirm the build actually produced output
+        run: |
+          if [ ! -f dist/index.html ]; then
+            echo "dist/index.html missing — build did not produce expected output"
+            exit 1
+          fi
+          echo "✅ Build produced dist/index.html"
