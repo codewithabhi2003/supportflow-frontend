@@ -1,11 +1,11 @@
 export default function TopBar({ title, subtitle, actions }) {
   return (
-    <div className="flex items-center justify-between border-b border-border bg-surface px-8 py-5">
-      <div>
-        <h1 className="text-lg font-semibold text-text-primary">{title}</h1>
-        {subtitle && <p className="text-sm text-text-secondary">{subtitle}</p>}
+    <div className="flex flex-col gap-3 border-b border-border bg-surface px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 sm:py-5 lg:px-8">
+      <div className="min-w-0">
+        <h1 className="truncate text-lg font-semibold text-text-primary">{title}</h1>
+        {subtitle && <p className="truncate text-sm text-text-secondary">{subtitle}</p>}
       </div>
-      {actions && <div className="flex items-center gap-3">{actions}</div>}
+      {actions && <div className="flex shrink-0 items-center gap-3">{actions}</div>}
     </div>
   );
 }
