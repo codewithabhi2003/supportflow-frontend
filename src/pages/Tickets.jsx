@@ -20,7 +20,7 @@ export default function Tickets() {
         actions={<Button onClick={() => setModalOpen(true)}>+ Create Ticket</Button>}
       />
 
-      <div className="flex flex-col gap-4 p-8">
+      <div className="flex flex-col gap-4 p-4 sm:p-6 lg:p-8">
         <div className="flex flex-wrap items-center gap-3">
           <SearchInput onSearch={(q) => updateParams({ search: q })} placeholder="Search tickets..." />
 
