@@ -25,7 +25,7 @@ export default function Analytics() {
   return (
     <>
       <TopBar title="Analytics" subtitle="Ticket distribution and AI coverage" />
-      <div className="flex flex-col gap-6 p-8">
+      <div className="flex flex-col gap-6 p-4 sm:p-6 lg:p-8">
         {loading ? (
           <div className="flex justify-center py-20"><Spinner size={28} /></div>
         ) : (
