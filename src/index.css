@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Light Mode (default) */
+:root {
+  --bg-base:      #FAFAFA;
+  --bg-surface:   #FFFFFF;
+  --bg-card:      #FFFFFF;
+  --bg-sidebar:   #FFFFFF;
+  --bg-input:     #F8FAFC;
+  --bg-hover:     #F1F5F9;
+
+  --primary:      #6366F1;
+  --primary-dark: #4F46E5;
+  --primary-soft: rgba(99,102,241,0.08);
+  --primary-ring: rgba(99,102,241,0.20);
+
+  --text-primary:  #0F172A;
+  --text-secondary:#475569;
+  --text-muted:    #94A3B8;
+
+  --border:        #E2E8F0;
+  --border-strong: #CBD5E1;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+
+  /* Status */
+  --status-open:         #3B82F6;
+  --status-open-bg:      #EFF6FF;
+  --status-progress:     #F59E0B;
+  --status-progress-bg:  #FFFBEB;
+  --status-closed:       #10B981;
+  --status-closed-bg:    #ECFDF5;
+
+  /* Priority */
+  --priority-high:    #EF4444;
+  --priority-high-bg: #FEF2F2;
+  --priority-med:     #F59E0B;
+  --priority-med-bg:  #FFFBEB;
+  --priority-low:     #6B7280;
+  --priority-low-bg:  #F9FAFB;
+}
+
+/* Dark Mode — toggle via data-theme="dark" on <html> */
+[data-theme="dark"] {
+  --bg-base:      #0F0F13;
+  --bg-surface:   #141418;
+  --bg-card:      #1A1A20;
+  --bg-sidebar:   #111116;
+  --bg-input:     #1E1E26;
+  --bg-hover:     #22222C;
+
+  --primary:      #818CF8;
+  --primary-dark: #6366F1;
+  --primary-soft: rgba(129,140,248,0.10);
+  --primary-ring: rgba(129,140,248,0.20);
+
+  --text-primary:  #F1F5F9;
+  --text-secondary:#94A3B8;
+  --text-muted:    #475569;
+
+  --border:        rgba(255,255,255,0.06);
+  --border-strong: rgba(255,255,255,0.10);
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.4);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Visible keyboard focus everywhere */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
