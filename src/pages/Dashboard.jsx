@@ -16,7 +16,7 @@ export default function Dashboard() {
   return (
     <>
       <TopBar title={`Welcome back, ${user?.name?.split(' ')[0] || 'there'}`} subtitle="Here's what's happening with your tickets" />
-      <div className="flex flex-col gap-6 p-8">
+      <div className="flex flex-col gap-6 p-4 sm:p-6 lg:p-8">
         {loading ? (
           <div className="flex justify-center py-20">
             <Spinner size={28} />
