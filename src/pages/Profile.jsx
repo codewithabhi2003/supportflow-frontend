@@ -33,7 +33,7 @@ export default function Profile() {
   return (
     <>
       <TopBar title="Profile" subtitle="Your account details" />
-      <div className="p-8">
+      <div className="p-4 sm:p-6 lg:p-8">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
