@@ -1,7 +1,6 @@
 import { NavLink, useLocation, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { LayoutDashboard, Ticket, Users, BarChart2, Settings, LogOut, X } from 'lucide-react';
-import ThemeToggle from '../common/ThemeToggle';
 import Avatar from '../common/Avatar';
 import { useAuth } from '../../context/AuthContext';
 
@@ -83,8 +82,6 @@ export default function Sidebar({ open, onClose }) {
         </nav>
 
         <div className="flex flex-col gap-3 border-t border-border px-3 py-4">
-          <ThemeToggle />
-
           <Link
             to="/profile"
             onClick={onClose}
