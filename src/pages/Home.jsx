@@ -15,27 +15,27 @@ import DashboardPreview from '../components/home/DashboardPreview';
 const features = [
   {
     icon: Zap,
-    title: 'AI Ticket Intelligence',
+    title: 'Instant AI Triage',
     description:
-      'Every ticket is automatically summarized, categorized, and prioritized — with a suggested reply ready to send.',
+      'Every ticket is read, summarized, and prioritized the second it arrives — with a ready-to-send reply. Your team starts solving problems instead of reading through them.',
   },
   {
     icon: BarChart3,
-    title: 'Real-Time Analytics',
+    title: 'Know Where Your Team Stands',
     description:
-      'Track ticket growth, category breakdowns, and team performance from a dashboard that updates as tickets come in.',
+      'See ticket volume, response trends, and workload at a glance — one live dashboard instead of digging through spreadsheets to find out how support is actually performing.',
   },
   {
     icon: Search,
-    title: 'Instant Search & Filters',
+    title: 'Nothing Gets Buried',
     description:
-      'Find any ticket in seconds by customer, status, priority, or category — no more digging through inboxes.',
+      'Find any ticket in seconds by customer, status, priority, or category. No more digging through a shared inbox to find the one request that matters right now.',
   },
   {
     icon: MessageSquareText,
-    title: 'Built for Teams',
+    title: 'Built for Growing Teams',
     description:
-      'Internal notes, status tracking, and a full activity timeline keep your whole team aligned on every ticket.',
+      'Internal notes and a full activity history mean a ticket can change hands without losing context — so support scales with your team, not against it.',
   },
 ];
 
@@ -98,7 +98,7 @@ export default function Home() {
                 className="mb-5 inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-3 py-1.5 text-xs font-medium text-text-secondary shadow-sm"
               >
                 <Sparkles size={13} className="text-primary" />
-                Powered by Groq AI &amp; n8n automation
+                AI-Powered Customer Support CRM
               </motion.div>
 
               <motion.h1
@@ -108,9 +108,9 @@ export default function Home() {
                 variants={fadeUp}
                 className="text-4xl font-bold leading-tight tracking-tight text-text-primary sm:text-5xl"
               >
-                Customer support,
+                Resolve tickets faster.
                 <br />
-                <span className="text-primary">supercharged by AI.</span>
+                <span className="text-primary">Keep customers happier.</span>
               </motion.h1>
 
               <motion.p
@@ -120,9 +120,10 @@ export default function Home() {
                 variants={fadeUp}
                 className="mt-6 max-w-xl text-base text-text-secondary sm:text-lg"
               >
-                SupportFlow triages every ticket the moment it arrives — summarizing,
-                categorizing, and drafting a reply automatically, so your team spends
-                time solving problems instead of reading through them.
+                SupportFlow reads, prioritizes, and drafts a reply for every incoming
+                ticket automatically — so your team spends less time sorting requests
+                and more time actually helping customers. Handle more support, without
+                adding more headcount.
               </motion.p>
 
               <motion.div
@@ -213,7 +214,7 @@ export default function Home() {
           transition={{ duration: 0.4 }}
           className="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-text-secondary"
         >
-          {['No credit card required', 'Set up in minutes', 'Built on MERN + n8n'].map((t) => (
+          {['No credit card required', 'Set up in minutes', 'Scales with your team'].map((t) => (
             <span key={t} className="flex items-center gap-1.5">
               <CheckCircle2 size={15} className="text-status-closed" /> {t}
             </span>
