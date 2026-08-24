@@ -23,40 +23,42 @@ export default function AppLayout() {
   }, [sidebarOpen]);
 
   return (
-    <div className="h-screen overflow-hidden bg-base">
+    <div className="flex min-h-screen bg-base">
+      {/* Sidebar */}
       <Sidebar
         open={sidebarOpen}
         onClose={() => setSidebarOpen(false)}
       />
 
-      <div className="flex h-screen min-w-0 flex-col lg:ml-64">
-        {/* Mobile Header */}
-        <div className="shrink-0 border-b border-border bg-surface lg:hidden">
-          <div className="flex items-center gap-3 px-4 py-3">
-            <button
-              onClick={() => setSidebarOpen(true)}
-              aria-label="Open menu"
-              className="rounded-md p-1.5 text-text-secondary hover:bg-hover"
-            >
-              <Menu size={20} />
-            </button>
+      {/* Main area */}
+      <div className="flex min-w-0 flex-1 flex-col lg:ml-72">
+        {/* Mobile header */}
+        <div className="flex items-center gap-3 border-b border-border bg-surface px-4 py-3 lg:hidden">
+          <button
+            onClick={() => setSidebarOpen(true)}
+            aria-label="Open menu"
+            className="rounded-md p-1.5 text-text-secondary hover:bg-hover"
+          >
+            <Menu size={20} />
+          </button>
 
-            <span className="flex items-center gap-1.5 text-sm font-bold text-text-primary">
-              <Sparkles size={15} className="text-primary" />
-              SupportFlow
-            </span>
-          </div>
+          <span className="flex items-center gap-1.5 text-sm font-bold text-text-primary">
+            <Sparkles size={15} className="text-primary" />
+            SupportFlow
+          </span>
         </div>
 
-        {/* ONLY THIS AREA SCROLLS */}
-        <main className="min-h-0 flex-1 overflow-y-auto overflow-x-hidden">
+        <main className="flex-1 overflow-y-auto overflow-x-hidden">
           <AnimatePresence mode="wait">
             <motion.div
               key={location.pathname}
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.18, ease: 'easeOut' }}
+              transition={{
+                duration: 0.18,
+                ease: 'easeOut',
+              }}
             >
               {outlet}
             </motion.div>
