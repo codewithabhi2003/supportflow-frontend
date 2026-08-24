@@ -10,24 +10,29 @@ export default function AppLayout() {
   const outlet = useOutlet();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  // Auto-close the mobile drawer on route change (e.g. after tapping a
-  // nav link) and prevent background scroll while it's open.
   useEffect(() => {
     setSidebarOpen(false);
   }, [location.pathname]);
 
   useEffect(() => {
     document.body.style.overflow = sidebarOpen ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
+
+    return () => {
+      document.body.style.overflow = '';
+    };
   }, [sidebarOpen]);
 
   return (
-    <div className="flex min-h-screen bg-base">
-      <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+    <div className="min-h-screen bg-base">
+      {/* Fixed sidebar */}
+      <Sidebar
+        open={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
+      />
 
-      <div className="flex min-w-0 flex-1 flex-col">
-        {/* Mobile-only top strip with the menu toggle — hidden on lg+, where
-            the sidebar is always visible and this would be redundant. */}
+      {/* Main content */}
+      <div className="flex min-h-screen flex-col lg:ml-64">
+        {/* Mobile header */}
         <div className="flex items-center gap-3 border-b border-border bg-surface px-4 py-3 lg:hidden">
           <button
             onClick={() => setSidebarOpen(true)}
@@ -36,12 +41,14 @@ export default function AppLayout() {
           >
             <Menu size={20} />
           </button>
+
           <span className="flex items-center gap-1.5 text-sm font-bold text-text-primary">
-            <Sparkles size={15} className="text-primary" /> SupportFlow
+            <Sparkles size={15} className="text-primary" />
+            SupportFlow
           </span>
         </div>
 
-        <main className="flex-1 overflow-y-auto overflow-x-hidden">
+        <main className="min-h-0 flex-1 overflow-y-auto overflow-x-hidden">
           <AnimatePresence mode="wait">
             <motion.div
               key={location.pathname}
@@ -56,7 +63,10 @@ export default function AppLayout() {
         </main>
       </div>
 
-      <Toaster position="top-right" toastOptions={{ duration: 3500 }} />
+      <Toaster
+        position="top-right"
+        toastOptions={{ duration: 3500 }}
+      />
     </div>
   );
 }
